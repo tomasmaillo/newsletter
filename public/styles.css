@@ -1,0 +1,178 @@
+/* Base CSS from https://thesephist.com/ */
+
+html,
+body {
+    transition: 0.4s;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+*:focus {
+    outline: none;
+}
+
+html {
+    /* adjust rem for page */
+    font-size: 18px;
+}
+
+body {
+    font-family: var(--font-serif);
+    color: var(--foreground-default);
+    background: var(--background-default);
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* MIDDLE */
+
+.overlay {
+    max-width: unset;
+    width: calc(100% - 32px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* TYPOGRAPHY */
+
+h1,
+h2,
+h3 {
+    font-family: 'Vollkorn', serif;
+    font-weight: normal;
+    line-height: 1.2em;
+    margin-top: 1.8em;
+    margin-bottom: 0em;
+    display: inline-block;
+    transition: 0.2s;
+    font-style: bold;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0rem;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.625em;
+    margin: 0.7em 0;
+}
+
+.desktop {
+    display: none !important;
+}
+
+@media only screen and (min-width: 600px) {
+    .overlay {
+        max-width: 600px;
+    }
+    h1,
+    h2,
+    h3 {
+        margin-top: 1em;
+        margin-bottom: 0em;
+        font-size: 3.5em;
+    }
+    .desktop {
+        display: initial !important;
+    }
+    .mobile {
+        display: none !important;
+    }
+}
+
+
+/* LINKS */
+
+a {
+    text-decoration: none;
+    padding: 0 3px;
+    border-radius: 3px;
+    color: var(--foreground-default);
+    transition: 0.4s;
+    border-bottom: 1px solid var(--project-card-outline);
+}
+
+a:hover {
+    background: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    box-shadow: 0 10px 12px 0 var(--shadow), 0 17px 50px 0 rgba(0, 0, 0, 0.10);
+}
+
+
+/* RAINBOW */
+
+body {
+    height: 100%;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    background: linear-gradient(124deg, #ff5500, #ef5d5d, #e8b71d, #e3e81d, #5def75, #1ddde8, #a7a2f6, #dd00f3, #dd00f3);
+    background-size: 1800% 1800%;
+    animation: rainbow 30s ease infinite;
+}
+
+@keyframes rainbow {
+    0% {
+        background-position: 0% 82%
+    }
+    50% {
+        background-position: 100% 19%
+    }
+    100% {
+        background-position: 0% 82%
+    }
+}
+
+
+/* FORM */
+
+input {
+    width: 80%;
+    border-radius: 10px 0px 0px 10px;
+    border: black 1px solid;
+    background: white;
+    transition: 0.2s;
+    padding: 8.5px;
+    font-size: 1em;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+input:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+button {
+    width: 20%;
+    border-radius: 0px 10px 10px 0px;
+    border: black 1px solid;
+    border-left: none;
+    background: rgba(255, 255, 255, 0.5);
+    transition: 0.2s;
+    padding: 8.5px;
+    font-size: 1em;
+    float: right;
+}
+
+button:hover {
+    cursor: pointer;
+    background: #e8fdeb;
+}
+
+
+/* FOOTER */
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
