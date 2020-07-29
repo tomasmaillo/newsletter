@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
-    console.log('http://localhost:' + port);
+    console.log(process.env.DOMAINNAME || ('http://localhost:' + port));
 });
 
 
@@ -77,7 +77,7 @@ async function sendConfirmationEmail(email, confirmationString) {
         to: email,
         subject: "Hello ✔",
         text: "Hello world?" + confirmationString,
-        html: "<b>Hello world?</b> http://localhost:3000/confirm/" + confirmationString,
+        html: "<h2>Hi :D</h2> <br> " + process.env.DOMAINNAME || ('http://localhost:' + port) + "/confirm/" + confirmationString,
     }
 
     return await transporter.sendMail(mailOptions, function(error, info) {
@@ -120,7 +120,7 @@ app.get("/confirm/:confirmationString", async(req, res) => {
                 }
             });
         } else {
-            res.send("invalid token")
+            res.send("invalid token try again? i guess? or contact me")
         }
     });
 
