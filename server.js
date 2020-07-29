@@ -77,7 +77,7 @@ async function sendConfirmationEmail(email, confirmationString) {
         to: email,
         subject: "Hello ✔",
         text: "Hello world?" + confirmationString,
-        html: "<h2>Hi :D</h2> <br> " + process.env.DOMAINNAME || ('http://localhost:' + port) + "/confirm/" + confirmationString,
+        html: "<h2>Hi :D</h2> <br> " + (process.env.DOMAINNAME || ('http://localhost:' + port)) + "/confirm/" + confirmationString,
     }
 
     return await transporter.sendMail(mailOptions, function(error, info) {
