@@ -96,11 +96,6 @@ app.get('/favicon.ico', function(req, res) {
     res.sendFile(__dirname + "/public/favicon.png");
 });
 
-// Serving main tomasmaillo
-app.get('/', function(req, res) {
-    res.sendFile(__dirname + "/public/main/" + "index.html");
-});
-
 // Serving CSS and JS
 app.get('/styles/:fileName', function(req, res) {
     res.sendFile(__dirname + "/public/css/" + req.params.fileName + ".css");
@@ -111,16 +106,16 @@ app.get('/js/:fileName', function(req, res) {
 });
 
 // Serving newsletter signup
+app.get('/', function(req, res) {
+    res.sendFile(__dirname + "/public/newsletter/" + "index.html");
+});
+
 app.get('/newsletter', function(req, res) {
     res.sendFile(__dirname + "/public/newsletter/" + "index.html");
 });
 
-/*
-app.get('/confirm/styles.css', function(req, res) {
-    res.sendFile(__dirname + "/public/main/" + "styles.css");
-});
-*/
 
+// Confirmation route
 app.get("/confirm/:confirmationString", async(req, res) => {
     await ref.once("value", function(data) {
         let confirmationString = req.params.confirmationString;
