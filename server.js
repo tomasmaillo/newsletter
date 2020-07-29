@@ -4,7 +4,7 @@ var crypto = require('crypto');
 const bodyParser = require("body-parser");
 require('dotenv').config();
 
-app.use(express.static(__dirname + "/public"));
+//app.use(express.static(__dirname + "/public"));
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -91,9 +91,35 @@ async function sendConfirmationEmail(email, confirmationString) {
 
 }
 
-app.get('/confirm/styles.css', function(req, res) {
-    res.sendFile(__dirname + "/public/" + "styles.css");
+// Serving favicon
+app.get('/favicon.ico', function(req, res) {
+    res.sendFile(__dirname + "/public/favicon.png");
 });
+
+// Serving main tomasmaillo
+app.get('/', function(req, res) {
+    res.sendFile(__dirname + "/public/main/" + "index.html");
+});
+
+// Serving CSS and JS
+app.get('/styles/:fileName', function(req, res) {
+    res.sendFile(__dirname + "/public/css/" + req.params.fileName + ".css");
+});
+
+app.get('/js/:fileName', function(req, res) {
+    res.sendFile(__dirname + "/public/js/" + req.params.fileName + ".js");
+});
+
+// Serving newsletter signup
+app.get('/newsletter', function(req, res) {
+    res.sendFile(__dirname + "/public/newsletter/" + "index.html");
+});
+
+/*
+app.get('/confirm/styles.css', function(req, res) {
+    res.sendFile(__dirname + "/public/main/" + "styles.css");
+});
+*/
 
 app.get("/confirm/:confirmationString", async(req, res) => {
     await ref.once("value", function(data) {
@@ -116,11 +142,11 @@ app.get("/confirm/:confirmationString", async(req, res) => {
                     console.log('Error when saving new record: ' + error)
                 } else {
                     //res.send("kldjñ")
-                    res.sendFile(__dirname + "/public/confirmed.html");
+                    res.sendFile(__dirname + "/public/newsletter/confirmed.html");
                 }
             });
         } else {
-            res.send("invalid token try again? i guess? or contact me")
+            res.sendFile(__dirname + "/public/newsletter/error.html")
         }
     });
 
