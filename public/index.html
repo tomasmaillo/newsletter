@@ -15,25 +15,41 @@
     <main>
         <div class="rainbow">
             <div id="me" class="overlay">
-                <form class="form-signin" method="POST">
+                <div id="form" class="form-signin">
 
-                    <div>
-                        <h1>Newsletter 💌</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <div id="form-input">
+                        <div>
+                            <h1>Newsletter 💌</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+
+                        <div>
+                            <input type="email" name="Email" id="email-input" class="form-control" placeholder="your@email">
+                            <button type="submit" id="enter">Go!</button>
+                        </div>
                     </div>
 
-                    <div>
-                        <input type="email" name="Email" id="inputEmail" class="form-control" placeholder="@" required>
-                        <button type="submit" id="enter">Go!</button>
-                    </div>
-                    
-                    <div id="succesful">
-                        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                    <div id="email-validation">
+                        <p><i>make sure you have entered the email correctly</i></p>
                     </div>
 
-                </form>
-                
-                
+                    <div id="awaiting-confirmation">
+                        <div class="lds-ellipsis">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+
+                    <div id="confirmation-sent">
+                        <h1>Confirmation sent</h1>
+                        <p>Check your email and click on the confirmation link</p>
+                    </div>
+
+                </div>
+
+
             </div>
         </div>
 

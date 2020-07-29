@@ -17,9 +17,6 @@ html {
 }
 
 body {
-    font-family: var(--font-serif);
-    color: var(--foreground-default);
-    background: var(--background-default);
     display: flex;
     flex-direction: column;
 }
@@ -57,8 +54,8 @@ h1 {
 
 p {
     font-size: 1rem;
-    line-height: 1.625em;
-    margin: 0.7em 0;
+    line-height: 1.5em;
+    margin: 0.5em 0;
 }
 
 .desktop {
@@ -93,7 +90,6 @@ a {
     border-radius: 3px;
     transition: 0.4s;
     border-bottom: 1px solid black;
-    
 }
 
 a:hover {
@@ -108,7 +104,6 @@ a:hover {
 .rainbow {
     height: 100vh;
     width: 100%;
-
     position: absolute;
     background: linear-gradient(124deg, #ff5500, #ef5d5d, #e8b71d, #e3e81d, #5def75, #1ddde8, #a7a2f6, #dd00f3, #dd00f3);
     background-size: 1800% 1800%;
@@ -127,23 +122,21 @@ a:hover {
     }
 }
 
+
 /* GREEN PULSE */
 
-.green{
-    background: rgb(126,223,121);
-    background: radial-gradient(circle, rgba(126,223,121,0) 1%, rgba(126,223,121,1) 2%, rgba(131,217,120,0) 4%, rgba(252,70,107,0) 100%);
+.green {
+    background: rgb(126, 223, 121);
+    background: radial-gradient(circle, rgba(126, 223, 121, 0) 1%, rgba(126, 223, 121, 1) 2%, rgba(131, 217, 120, 0) 4%, rgba(252, 70, 107, 0) 100%);
     animation: zoom 3s ease;
     background-size: 40% 80%;
     background-position: 50% 50%
-    
 }
 
 @keyframes zoom {
-    
     0% {
         background-size: 100% 100%;
     }
-    
     100% {
         background-size: 15000% 15000%;
     }
@@ -152,13 +145,19 @@ a:hover {
 
 /* FORM */
 
-form {
+#form {
     border-radius: 10px;
     border: black 1px solid;
     padding: 20px;
     margin-top: 50%;
 }
 
+#email-validation p {
+    font-size: 0.8em;
+    margin-top: 10px;
+    line-height: 15px;
+    color: gray;
+}
 
 input {
     width: 80%;
@@ -173,9 +172,7 @@ input {
 
 input:hover {
     background: rgba(255, 255, 255, 0.75);
-    
 }
-
 
 button {
     width: 20%;
@@ -192,7 +189,6 @@ button {
 button:hover {
     cursor: pointer;
     background: #e8fdeb;
-    
 }
 
 
