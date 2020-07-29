@@ -18,7 +18,7 @@ app.listen(port, function() {
 
 // FIREBASE DB
 var admin = require("firebase-admin");
-var serviceAccount = require("./serviceAccountKey.json");
+var serviceAccount = (JSON.parse(process.env.SERVICEACCOUNTKEY));
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
