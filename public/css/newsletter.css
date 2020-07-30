@@ -105,20 +105,20 @@ a:hover {
     height: 100vh;
     width: 100%;
     position: absolute;
-    background: linear-gradient(124deg, #ff5500, #ef5d5d, #e8b71d, #e3e81d, #5def75, #1ddde8, #a7a2f6, #dd00f3, #dd00f3);
-    background-size: 1800% 1800%;
+    background: linear-gradient(124deg, #ff5500, #ef5d5d, #e8b71d, #e3e81d, #5def75, #1ddde8, #a7a2f6, #df00f3);
+    background-size: 1500% 1500%;
     animation: rainbow 30s ease infinite;
 }
 
 @keyframes rainbow {
     0% {
-        background-position: 0% 82%
+        background-position: 0% 0%
     }
     50% {
-        background-position: 100% 19%
+        background-position: 100% 100%
     }
     100% {
-        background-position: 0% 82%
+        background-position: 0% 0%
     }
 }
 
