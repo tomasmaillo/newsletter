@@ -1,6 +1,7 @@
 $("#awaiting-confirmation").hide();
 $("#confirmation-sent").hide();
 $("#email-validation").hide();
+$("#invalid-email").hide();
 
 $("#enter").click(function() {
 
@@ -15,15 +16,23 @@ $("#enter").click(function() {
                 email: $("#email-input").val()
             },
             function(data, status) {
-                $("#awaiting-confirmation").hide(200);
-                $("#confirmation-sent").show(200);
-                $("#form").toggleClass("green");
 
-                setTimeout(
-                    function() {
-                        $("#form").toggleClass("green");
-                    }, 3000);
+                $("#awaiting-confirmation").hide(200);
+
+                if (data.status === 200) {
+                    $("#confirmation-sent").show(200);
+                    $("#form").toggleClass("green");
+                    setTimeout(
+                        function() {
+                            $("#form").toggleClass("green");
+                        }, 3000);
+                } else {
+                    $("#invalid-email").show(200);
+                }
             });
+
+
+
 
     } else {
         $("#email-validation").show(200);
