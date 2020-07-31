@@ -78,8 +78,7 @@ app.post("/newemail", async(req, res) => {
     let newEmail = req.body.email;
     await uniqueEmail(newEmail) ? newEmailProcessChecklist["uniqueEmail"] = true : newEmailProcessChecklist["uniqueEmail"] = false;
 
-    newEmailProcessChecklist["uniqueEmail"] = true
-        // Send email
+    // Send email
     if (newEmailProcessChecklist["uniqueEmail"]) {
         await sendConfirmationEmail(newEmail, confirmationString) ? newEmailProcessChecklist["emailSent"] = true : newEmailProcessChecklist["emailSent"] = false;
     }
