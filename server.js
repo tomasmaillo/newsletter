@@ -78,7 +78,8 @@ app.post("/newemail", async(req, res) => {
     let newEmail = req.body.email;
     await uniqueEmail(newEmail) ? newEmailProcessChecklist["uniqueEmail"] = true : newEmailProcessChecklist["uniqueEmail"] = false;
 
-    // Send email
+    newEmailProcessChecklist["uniqueEmail"] = true
+        // Send email
     if (newEmailProcessChecklist["uniqueEmail"]) {
         await sendConfirmationEmail(newEmail, confirmationString) ? newEmailProcessChecklist["emailSent"] = true : newEmailProcessChecklist["emailSent"] = false;
     }
@@ -125,7 +126,80 @@ async function sendConfirmationEmail(email, confirmationString) {
         to: email,
         subject: "Hello ✔",
         text: "Hello world?" + confirmationString,
-        html: "<h2>Hi :D</h2> <br> " + (process.env.DOMAINNAME || ('http://localhost:' + port)) + "/confirm/" + confirmationString,
+        html: `<head>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <style>
+            body {
+                font-family: 'Roboto', sans-serif;
+                background-color: #E2F3F0;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+                font-weight: bold;
+                line-height: 1.2em;
+                margin-top: 0em;
+                margin-bottom: 0em;
+                display: inline-block;
+            }
+            
+            .overlay {
+                max-width: unset;
+                width: 500px;
+                padding: 40px;
+                border-radius: 20px;
+                margin-top: 20px;
+                margin-left: auto;
+                margin-right: auto;
+                background-color: #ffffff;
+            }
+            
+            @media only screen and (min-width: 600px) {
+                .overlay {
+                    max-width: 500px;
+                }
+                h1 {
+                    font-size: 3.5em;
+                }
+                .desktop {
+                    display: initial !important;
+                }
+                .mobile {
+                    display: none !important;
+                }
+            }
+            
+            a {
+                text-decoration: none;
+            }
+            
+            .button {
+                padding: 10px;
+                border-radius: 100px;
+                background-color: #CADFE2;
+                border-color: #2E3532;
+                border-style: solid;
+                border-width: 1px;
+                transition: 0.2s;
+                text-align: center;
+                color: #2E3532;
+            }
+            
+        </style>
+    </head>
+    
+    <body>
+    
+        <div class="overlay">
+            <h1>Hello 👋</h1>
+            <p>Last step! Confirm your email.</p>
+            <a target="_blank" href="${(process.env.DOMAINNAME || ('http://localhost:' + port)) + "/confirm/" + confirmationString}">
+                <div class="button">confirm email!</button>
+            </a>
+        </div>
+
+    </body>`
+
     }
 
     try {
